@@ -155,3 +155,13 @@
   .copy:hover { background: #3a3b40; }
   .note { border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 12px 12px 0; padding: 14px 18px; margin: 18px 0; font-size: 15px; color: var(--ink-soft); }
   @media (max-width: 860px) { .facts { grid-template-columns: 1fr; } .article { padding-top: 32px; } }
+
+/* Small accessibility and mobile refinements. */
+section[id] { scroll-margin-top: 100px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.skip-link { position: absolute; top: -100px; left: 20px; z-index: 20; padding: 12px 18px; background: var(--surface); }
+.skip-link:focus { top: 16px; }
+.socials a[aria-disabled="true"] { opacity: .55; cursor: default; }
+button:disabled { opacity: .65; cursor: default; transform: none; }
+@media (max-width: 440px) { .news form { flex-direction: column; } .news button { justify-content: center; } .card-foot { flex-wrap: wrap; gap: 8px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
