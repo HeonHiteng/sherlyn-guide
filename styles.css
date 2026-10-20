@@ -1,24 +1,15 @@
   :root {
-    --bg: #f6f5f1;
+    color-scheme: light;
+    --bg: #faf8ff;
     --surface: #ffffff;
-    --ink: #17181a;
-    --ink-soft: #6b6d70;
-    --ink-faint: #9a9c9f;
-    --line: #e7e5df;
-    --accent: #7a3b5c;        /* plum */
+    --ink: #251d35;
+    --ink-soft: #655b75;
+    --ink-faint: #786c88;
+    --line: #e6def1;
+    --accent: #7041b5;
     --accent-ink: #ffffff;
-    --chip: #f1efea;
+    --chip: #f0e9fb;
     --radius: 18px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #121214; --surface: #1b1b1f; --ink: #f2f1ee; --ink-soft: #a6a7ab;
-      --ink-faint: #75767a; --line: #2a2a2f; --accent: #c98bab; --accent-ink: #1a0f15; --chip: #232328;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #121214; --surface: #1b1b1f; --ink: #f2f1ee; --ink-soft: #a6a7ab;
-    --ink-faint: #75767a; --line: #2a2a2f; --accent: #c98bab; --accent-ink: #1a0f15; --chip: #232328;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,7 +34,7 @@
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; }
   .avatar {
     width: 30px; height: 30px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #e7b7a4);
+    background: linear-gradient(135deg, var(--accent), #c7abea);
     display: grid; place-items: center; color: #fff; font-size: 13px; font-weight: 700;
   }
   .links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
@@ -74,7 +65,7 @@
   }
   .photo .ph span { font-size: 72px; font-weight: 700; display: block; line-height: 1; margin-bottom: 8px; }
   h1 { font-size: clamp(44px, 6.4vw, 76px); line-height: 1.02; letter-spacing: -.035em; font-weight: 700; margin: 16px 0 24px; }
-  h1 em { font-style: normal; color: var(--ink-faint); }
+  h1 em { font-style: normal; color: var(--accent); }
   .lede { font-size: 18px; color: var(--ink-soft); max-width: 460px; }
   .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin: 32px 0 40px; }
   .follow { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
