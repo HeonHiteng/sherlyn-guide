@@ -165,3 +165,18 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 button:disabled { opacity: .65; cursor: default; transform: none; }
 @media (max-width: 440px) { .news form { flex-direction: column; } .news button { justify-content: center; } .card-foot { flex-wrap: wrap; gap: 8px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+
+/* Profile and simple two-link navigation. */
+.avatar-photo { width: 36px; height: 36px; overflow: hidden; flex-shrink: 0; background: var(--chip); }
+.avatar-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 22% 44%; transform: scale(2.7); transform-origin: 22% 44%; }
+nav { padding-right: 22px; }
+.social-handles { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: var(--accent); }
+.social-handles a { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 860px) { .links { display: flex; gap: 18px; } }
+@media (max-width: 440px) { .brand { font-size: 14px; gap: 7px; } .links { font-size: 13px; gap: 14px; } nav { gap: 12px; padding-right: 14px; } .hero h1 { font-size: 43px; } }
+
+.profile-stat { display: flex; align-items: center; gap: 14px; margin-top: 24px; }
+.profile-stat strong { font-size: 30px; line-height: 1.1; letter-spacing: -.03em; }
+.profile-stat span { font-size: 12px; color: var(--ink-soft); }
+.profile-stat a { display: block; color: var(--accent); }
+.profile-highlight { font-size: 12px; color: var(--ink-soft); margin-top: 14px; }
