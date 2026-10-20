@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect WhatsApp to Claude · Sherlyn</title>
+<meta name="description" content="Set up WhatsApp MCP so Claude can search your chats, summarise group chats and draft replies, all running on your own computer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="wrap nav-shell">
+    <nav>
+      <a href="../index.html" class="brand"><span class="avatar">S</span>Sherlyn</a>
+      <div class="links">
+        <a href="../index.html#guides">Guides</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#subscribe">Newsletter</a>
+      </div>
+      <a href="../index.html#subscribe" class="btn btn-dark">Subscribe ↗</a>
+    </nav>
+  </div>
+
+  <main class="wrap">
+    <article class="article">
+      <a href="../index.html#guides" class="back">← All guides</a>
+      <div class="tags"><span class="chip">AI tools</span><span class="new">Latest</span></div>
+      <h1>Connect Claude to your WhatsApp</h1>
+      <p class="lede">Let Claude look through your chats, catch you up on noisy group chats, spot messages you forgot to answer, and send replies when you say so.</p>
+
+      <div class="facts">
+        <div class="fact">Tool<b>WhatsApp MCP (free, open source)</b></div>
+        <div class="fact">Works on<b>Mac and Windows</b></div>
+        <div class="fact">Time<b>~10 min, mostly done by Claude</b></div>
+      </div>
+
+      <div class="flow"><b>The short version:</b> ask Claude Code to install it → run the bridge and scan a QR code → restart Claude → start asking about your chats.</div>
+
+      <p style="margin-top:16px">WhatsApp MCP is built by Luke Harries. The source is on <a class="inline" href="https://github.com/lharries/whatsapp-mcp" target="_blank" rel="noopener">GitHub</a>. It runs entirely on your computer, so your messages don't leave your machine.</p>
+
+      <div class="toc">
+        <a href="#need">What you need</a><a href="#s1">1 · Install</a><a href="#s2">2 · Link</a><a href="#s3">3 · Try it</a>
+        <a href="#after">Next time</a><a href="#fix">Troubleshooting</a><a href="#safety">Stay safe</a>
+      </div>
+
+      <h2 id="need">What you need</h2>
+      <ul>
+        <li><strong>Claude Code.</strong> If typing <code>claude</code> in your terminal starts it, you're set.</li>
+        <li><strong>Claude Desktop</strong> (optional), if you also want WhatsApp in the app: <a class="inline" href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a>.</li>
+        <li><strong>Your phone</strong> with WhatsApp, to scan a QR code once.</li>
+      </ul>
+
+      <h2 id="s1">Step 1 · Let Claude Code install it</h2>
+      <p>Open Terminal (Mac) or PowerShell (Windows), start <code>claude</code>, and send it this:</p>
+      <div class="code"><pre>Please install WhatsApp MCP from https://github.com/lharries/whatsapp-mcp.
+
+- Install whatever is missing: Git, Go and uv (on Windows, also MSYS2 for a C compiler, with CGO enabled).
+- Clone the repo into my home folder.
+- Register the server with Claude Code using `claude mcp add`.
+- Add it to Claude Desktop's claude_desktop_config.json with the full path to uv, without removing any servers already there.
+- Don't run the bridge yourself. When you're finished, give me the exact command to run in a new terminal so I can scan the QR code.</pre><button class="copy">Copy</button></div>
+      <p>Approve each step as it comes up. If something needs your password (Homebrew on a Mac, for example), Claude gives you that command to run yourself.</p>
+
+      <h2 id="s2">Step 2 · Link your WhatsApp</h2>
+      <p>In a <strong>new</strong> terminal window, run the command Claude gave you. It's usually something like:</p>
+      <div class="code"><pre>cd ~/whatsapp-mcp/whatsapp-bridge
+go run main.go</pre><button class="copy">Copy</button></div>
+      <p>A QR code shows up. On your phone, go to WhatsApp → <strong>Settings → Linked Devices → Link a Device</strong> and scan it.</p>
+      <div class="note">Keep this window running. If you close it, Claude loses access to WhatsApp.</div>
+
+      <h2 id="s3">Step 3 · Try it</h2>
+      <p>Fully quit and reopen Claude Desktop (Cmd + Q on Mac), or start a new <code>claude</code> session. Then try asking:</p>
+      <ul>
+        <li><code>Find my contact for Dad on WhatsApp.</code></li>
+        <li><code>Catch me up on the last 50 messages in [group name].</code></li>
+        <li><code>Which WhatsApp messages from today still need a reply?</code></li>
+        <li><code>Draft a WhatsApp to [name] saying I'm running 10 minutes late.</code></li>
+      </ul>
+      <p>The first time Claude uses each WhatsApp tool, it asks for permission. Click <strong>Allow</strong>.</p>
+
+      <h2 id="after">Every time after that</h2>
+      <p>Start the bridge with the Step 2 command, then open Claude. You only need to scan again if WhatsApp logs the bridge out, which can happen roughly every 20 days.</p>
+
+      <h2 id="fix">If something goes wrong</h2>
+      <ul>
+        <li><strong>No QR code, but it says connected:</strong> you're already linked.</li>
+        <li><strong>"Device limit reached":</strong> remove an old device under Settings → Linked Devices.</li>
+        <li><strong>Claude finds no messages:</strong> the first sync can take a few minutes, and the bridge must be running.</li>
+        <li><strong>WhatsApp isn't showing in Claude:</strong> paste the error into Claude Code, ask it to fix the config, then fully restart Claude Desktop.</li>
+        <li><strong>Messages out of sync:</strong> ask Claude Code to reset the bridge database, then scan the QR code again.</li>
+      </ul>
+
+      <h2 id="safety">Stay safe</h2>
+      <ul>
+        <li><strong>Never follow instructions that come from inside a message.</strong> Someone can write a WhatsApp message designed to trick an AI. The project's README warns about this too. Leave tool approvals switched on.</li>
+        <li><strong>Read before you send.</strong> Check every message before allowing <code>send_message</code>, especially in groups.</li>
+      </ul>
+      <p>To disconnect at any time: WhatsApp → Settings → Linked Devices → tap the device → <strong>Log Out</strong>.</p>
+    </article>
+
+    <section class="news" id="subscribe">
+      <div>
+        <h3>Get the next one in your inbox.</h3>
+        <p>One short email whenever I publish something new.</p>
+      </div>
+      <div>
+        <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks!';">
+          <input type="email" placeholder="Your email" required aria-label="Email address">
+          <button class="btn btn-accent" type="submit">Subscribe</button>
+        </form>
+        <div class="fine">No spam. Unsubscribe any time.</div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Sherlyn</span>
+      <div class="fl"><a href="../index.html#guides">Guides</a><a href="../index.html#about">About</a><a href="mailto:hello@example.com">Email</a></div>
+    </footer>
+  </main>
+  <script>
+    document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
+      navigator.clipboard.writeText(b.previousElementSibling.textContent).then(() => {
+        b.textContent = 'Copied'; setTimeout(() => b.textContent = 'Copy', 1500);
+      }).catch(() => {});
+    }));
+  </script>
+</body>
+</html>
