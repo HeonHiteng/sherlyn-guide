@@ -6,7 +6,7 @@
     --ink-soft: #655b75;
     --ink-faint: #786c88;
     --line: #e6def1;
-    --accent: #7041b5;
+    --accent: #8b2bbd;
     --accent-ink: #ffffff;
     --chip: #f0e9fb;
     --radius: 18px;
@@ -46,7 +46,8 @@
   }
   .btn:hover { transform: translateY(-1px); }
   .btn-dark { background: var(--ink); color: var(--bg); }
-  .btn-accent { background: var(--accent); color: var(--accent-ink); border-radius: 10px; padding: 13px 20px; }
+  .btn-accent, .btn-accent:visited { background-color: var(--accent); color: var(--accent-ink); border-radius: 10px; padding: 13px 20px; }
+  .btn-accent:hover, .btn-accent:focus-visible { background-color: #74219f; color: #ffffff; }
   .btn-ghost { background: none; color: var(--ink); padding: 13px 6px; }
 
   /* Hero */
@@ -165,4 +166,3 @@ nav { padding-right: 22px; }
 .social-handles a { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 860px) { .links { display: flex; gap: 18px; } }
 @media (max-width: 440px) { .brand { font-size: 14px; gap: 7px; } .links { font-size: 13px; gap: 14px; } nav { gap: 12px; padding-right: 14px; } .hero h1 { font-size: 43px; } }
-
