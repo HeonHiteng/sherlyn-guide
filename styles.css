@@ -187,3 +187,19 @@ nav { padding-right: 22px; }
 .guide-thumbnail img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .25s ease; }
 .card-visual:hover .guide-thumbnail img { transform: scale(1.025); }
 @media (prefers-reduced-motion: reduce) { .guide-thumbnail img { transition: none; } .card-visual:hover .guide-thumbnail img { transform: none; } }
+
+/* Quiet movement and clear interaction feedback. */
+.links a { padding: 6px 11px; margin: -6px -11px; border-radius: 999px; transition: color .2s ease, background-color .2s ease; }
+.links a.is-active, .links a:hover { color: #8b2bbd; background: #f0e4f8; }
+.btn-accent:active { transform: translateY(1px) scale(.98); }
+.ctas .btn-accent { box-shadow: 0 4px 12px #8b2bbd12; }
+.ctas .btn-accent:hover { box-shadow: 0 7px 20px #8b2bbd25; }
+.card-visual { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.card-visual:hover, .card-visual:focus-visible { border-color: #c2a0dc; box-shadow: 0 16px 35px -20px #681d9150; }
+.card-visual.is-tilting { transform: perspective(1000px) translateY(-4px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); }
+.card-foot b { display: inline-block; transition: transform .2s ease; }
+.card-visual:hover .card-foot b, .card-visual:focus-visible .card-foot b { transform: translateX(4px); }
+.card-visual:hover .guide-thumbnail img, .card-visual:focus-visible .guide-thumbnail img { transform: translateY(-3px) scale(1.035); }
+.social-handles a { transition: color .2s ease, text-underline-offset .2s ease; }
+.social-handles a:hover { color: #681d91; text-underline-offset: 7px; }
+@media (prefers-reduced-motion: reduce) { .card-visual, .card-visual.is-tilting, .card-visual:hover, .card-visual:hover .guide-thumbnail img, .card-visual:focus-visible .guide-thumbnail img, .card-visual:hover .card-foot b, .card-visual:focus-visible .card-foot b, .btn-accent:active { transform: none; } }
