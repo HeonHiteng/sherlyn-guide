@@ -166,3 +166,17 @@ nav { padding-right: 22px; }
 .social-handles a { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 860px) { .links { display: flex; gap: 18px; } }
 @media (max-width: 440px) { .brand { font-size: 14px; gap: 7px; } .links { font-size: 13px; gap: 14px; } nav { gap: 12px; padding-right: 14px; } .hero h1 { font-size: 43px; } }
+
+/* Hermes3D guide */
+.guide-toc { display: flex; align-items: center; justify-content: flex-start; gap: 8px; padding: 0; border: 0; border-radius: 0; background: transparent; backdrop-filter: none; }
+.toc-label { flex-basis: 100%; color: var(--ink-soft); font-size: 13px; margin-bottom: 4px; }
+.hermes-guide .code pre { padding-top: 48px; overflow-wrap: anywhere; }
+.connection-table { overflow-x: auto; margin: 20px 0; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.connection-table table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+.connection-table th, .connection-table td { padding: 14px 16px; vertical-align: top; border-bottom: 1px solid var(--line); }
+.connection-table thead { background: var(--chip); }
+.connection-table tbody th { width: 28%; font-weight: 600; }
+.connection-table td { color: var(--ink-soft); overflow-wrap: anywhere; }
+.connection-table tr:last-child th, .connection-table tr:last-child td { border-bottom: 0; }
+.guide-credit { border-top: 1px solid var(--line); margin-top: 32px; padding-top: 20px; }
+.copy-status { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

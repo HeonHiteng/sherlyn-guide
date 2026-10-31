@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf8ff">
+<meta name="color-scheme" content="light">
+<title>Give your AI agents a 3D office · Sherlyn</title>
+<meta name="description" content="Set up Hermes3D locally to see your Hermes agents in a 3D office, follow their activity, and manage their Kanban board.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=guides-20261031">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap nav-shell">
+    <nav aria-label="Main navigation">
+      <a href="../index.html" class="brand"><span class="avatar avatar-photo"><img src="../profile.jpg" alt="" width="36" height="36"></span>Sherlyn Heon</a>
+      <div class="links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#guides">Guide</a>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap" id="main">
+    <article class="article hermes-guide">
+      <a href="../index.html#guides" class="back">← All guides</a>
+      <div class="tags"><span class="chip">AI agents</span><span class="new">Latest</span></div>
+      <h1>Give your AI agents a 3D office</h1>
+      <p class="lede">Hermes3D turns your Hermes agents into little characters in a 3D office. See who’s working, who’s idle, and what’s on their Kanban board. It’s free and open source.</p>
+      <div class="facts">
+        <div class="fact">Tool<b>Hermes3D (free, open source)</b></div>
+        <div class="fact">Setup<b>On your own computer</b></div>
+        <div class="fact">Time<b>About 10 minutes</b></div>
+      </div>
+      <p><strong>Repo:</strong> <a class="inline" href="https://github.com/iamlukethedev/Hermes3D" target="_blank" rel="noopener noreferrer">Hermes3D on GitHub</a>, built by <a class="inline" href="https://github.com/iamlukethedev" target="_blank" rel="noopener noreferrer">@iamlukethedev</a>.</p>
+      <nav class="toc guide-toc" aria-label="Jump to a section">
+        <span class="toc-label">Jump to a section</span>
+        <a href="#need">1 · What you need</a>
+        <a href="#easy">2 · Let Claude do it</a>
+        <a href="#token">3 · Make a token</a>
+        <a href="#serve">4 · Start Hermes</a>
+        <a href="#install">5 · Start Hermes3D</a>
+        <a href="#connect">6 · Connect</a>
+        <a href="#fix">7 · Troubleshooting</a>
+      </nav>
+      <h2 id="need">What you need</h2>
+      <ul>
+        <li><strong>Hermes Agent</strong> installed and working. If <code>hermes</code> runs in your terminal, you’re good.</li>
+        <li><strong>Node.js 20 or newer.</strong></li>
+        <li><strong>Git.</strong></li>
+      </ul>
+      <div class="note">The commands below use Bash: Terminal on macOS or Linux, or WSL on Windows. You’ll also need <code>openssl</code> to generate the token.</div>
+      <h2 id="easy">The easy way: let Claude do it</h2>
+      <p>Open Claude Code and paste this:</p>
+      <div class="code"><pre>Set up Hermes3D for me from https://github.com/iamlukethedev/Hermes3D. I already have hermes-agent installed on this machine. Follow docs/hermes-agent-tailscale.md, but everything runs locally, so skip the Tailscale parts. Save a token as HERMES3D_OFFICE_TOKEN in ~/.hermes/.env, start hermes serve on 127.0.0.1 port 9120, start Hermes3D, then tell me exactly what to type into the connect screen.</pre><button class="copy" type="button" aria-label="Copy Claude setup prompt">Copy</button></div>
+      <p>Claude handles the rest. If you’d rather do it yourself, here are the four steps.</p>
+      <h2 id="token">1. Make a token (once)</h2>
+      <p>This is the password between Hermes and the office.</p>
+      <div class="code"><pre>echo "HERMES3D_OFFICE_TOKEN=$(openssl rand -hex 32)" &gt;&gt; ~/.hermes/.env</pre><button class="copy" type="button" aria-label="Copy token generation command">Copy</button></div>
+      <p>Run this only once. If you already have <code>HERMES3D_OFFICE_TOKEN</code> in that file, reuse it instead of adding a second entry.</p>
+      <h2 id="serve">2. Start Hermes for the office</h2>
+      <div class="code"><pre>HERMES_DASHBOARD_SESSION_TOKEN="$(grep '^HERMES3D_OFFICE_TOKEN=' ~/.hermes/.env | cut -d= -f2)" hermes serve --host 127.0.0.1 --port 9120 --skip-build</pre><button class="copy" type="button" aria-label="Copy Hermes startup command">Copy</button></div>
+      <div class="note">Leave this terminal open. Close it and the office goes offline.</div>
+      <h2 id="install">3. Install and start Hermes3D</h2>
+      <p>In a new terminal:</p>
+      <div class="code"><pre>git clone https://github.com/iamlukethedev/Hermes3D.git
+cd Hermes3D
+npm install
+cp .env.example .env
+npm run dev</pre><button class="copy" type="button" aria-label="Copy Hermes3D install commands">Copy</button></div>
+      <p>Keep this terminal open too.</p>
+      <h2 id="connect">4. Connect</h2>
+      <p>Open <a class="inline" href="http://localhost:3000" target="_blank" rel="noopener noreferrer">http://localhost:3000</a> and fill in the connect screen:</p>
+      <div class="connection-table" role="region" aria-label="Hermes3D connection settings" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">Field</th><th scope="col">What to put</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Backend</th><td><strong>Hermes Agent (direct)</strong></td></tr>
+            <tr><th scope="row">Gateway URL</th><td><code>ws://localhost:9120</code></td></tr>
+            <tr><th scope="row">Gateway Token</th><td>Run <code>grep '^HERMES3D_OFFICE_TOKEN=' ~/.hermes/.env</code> and paste everything after the <code>=</code>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Hit <strong>Connect</strong>. Each Hermes profile shows up as its own character, and the Kanban board works straight away.</p>
+      <h2 id="fix">If it doesn’t work</h2>
+      <ul>
+        <li><strong>Connects, then drops with a 403:</strong> the token doesn’t match. Copy it again from <code>~/.hermes/.env</code>.</li>
+        <li><strong>Won’t connect at all:</strong> check that both terminals are still running. If the Hermes terminal closed, run the step 2 command again.</li>
+        <li><strong>Only one character:</strong> you have one Hermes profile. One profile = one agent in the office.</li>
+      </ul>
+      <div class="note"><strong>Two don’ts:</strong>
+        <ul>
+          <li>Don’t save <code>HERMES_DASHBOARD_SESSION_TOKEN</code> in <code>~/.hermes/.env</code>. It breaks the Hermes desktop app. Use the <code>HERMES3D_OFFICE_TOKEN</code> name from step 1.</li>
+          <li>Don’t share your token. Anyone with it can talk to your agents.</li>
+        </ul>
+      </div>
+      <p>Hermes running on another machine, like a Mac mini or a server? Follow <a class="inline" href="https://github.com/iamlukethedev/Hermes3D/blob/main/docs/hermes-agent-tailscale.md" target="_blank" rel="noopener noreferrer">docs/hermes-agent-tailscale.md</a> in the repo. If you serve a specific profile, use that profile’s <code>HERMES_HOME</code> for its <code>.env</code> file.</p>
+      <p class="guide-credit">Hermes3D is a community project, not an official Hermes product. All credit to <a class="inline" href="https://github.com/iamlukethedev" target="_blank" rel="noopener noreferrer">@iamlukethedev</a>.</p>
+      <p class="copy-status" role="status" aria-live="polite"></p>
+    </article>
+    <footer>
+      <span>© 2026 Sherlyn</span>
+      <div class="fl"><a href="../index.html#about">About</a><a href="../index.html#guides">Guides</a></div>
+    </footer>
+  </main>
+  <script>
+    document.querySelectorAll('.copy').forEach(button => {
+      button.addEventListener('click', async () => {
+        const status = document.querySelector('.copy-status');
+        try {
+          await navigator.clipboard.writeText(button.previousElementSibling.textContent);
+          button.textContent = 'Copied';
+          status.textContent = button.getAttribute('aria-label').replace(/^Copy /, '') + ' copied.';
+          setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+        } catch {
+          button.textContent = 'Select text';
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(button.previousElementSibling);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          status.textContent = 'Copy was unavailable. The text is selected so you can copy it manually.';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
