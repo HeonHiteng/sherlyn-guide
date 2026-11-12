@@ -29,23 +29,9 @@
       <a href="../index.html#guides" class="back">← All guides</a>
       <div class="tags"><span class="chip">Creative coding</span><span class="new">Latest</span></div>
       <h1>Build a foggy mirror with AI</h1>
-      <p class="lede">Turn your webcam into a misty mirror. Open your mouth to fog the glass, write with your fingertip, and blow it a kiss. Here’s the prompt to build your own.</p>
-      <div class="facts">
-        <div class="fact">Build with<b>An AI coding assistant</b></div>
-        <div class="fact">You’ll make<b>An interactive web app</b></div>
-        <div class="fact">Input<b>Camera or mouse</b></div>
-      </div>
-      <div class="note">The “breath” effect follows your mouth opening on camera. It doesn’t detect your breath or need a microphone.</div>
-      <nav class="toc guide-toc" aria-label="Jump to a section">
-        <span class="toc-label">Jump to a section</span>
-        <a href="#need">1 · What you need</a><a href="#prompt">2 · Copy the prompt</a><a href="#run">3 · Open your mirror</a><a href="#try">4 · Try the gestures</a><a href="#refine">5 · Refine it</a><a href="#share">6 · Share it</a>
-      </nav>
-      <h2 id="need">1. Start a fresh project</h2>
-      <p>Open your AI coding assistant in an empty project folder. Use one that can create files, install dependencies, and run a web app.</p>
-      <ul><li>A computer with a webcam for the full experience.</li><li>A browser with WebGL2 support.</li><li>Node.js and npm if you’re building locally. Ask your assistant to check the version required by the project.</li></ul>
-      <p>No camera? The prompt includes a mouse-and-touch mode with a generated bathroom background.</p>
-      <h2 id="prompt">2. Give AI the full prompt</h2>
-      <p>Download the file and attach it to your coding assistant, or expand it below and copy the text. Keep the full version: it describes the tracking, fog, writing, and fallbacks.</p>
+      <p class="lede">Turn your webcam into a foggy mirror. Write with your fingertip and leave a kiss.</p>
+      <h2 id="prompt">1. Grab the prompt</h2>
+      <p>Download and attach it to your AI coding assistant, or copy it below.</p>
       <p><a class="btn btn-accent" href="../prompts/foggy-mirror.md" download>Download the prompt ↓</a></p>
       <details><summary>Read and copy the full prompt</summary>
 <div class="code"><pre>Build **Foggy Mirror**: a full-screen, photorealistic interactive web app where your webcam is a bathroom mirror. You breathe on it to fog it up, write in the fog with your fingertip, and kiss it to leave a lip print. It must be a fully working experience, not a mockup.
@@ -130,37 +116,19 @@
 
 **Most important:** your real mouth opening must create the fog, your real fingertip must control exactly where the fog is removed, and your real kiss must leave the lip print. Everything must be live, smooth and realistic.
 </pre><button class="copy" type="button" aria-label="Copy full Foggy Mirror prompt">Copy</button></div></details>
-      <p>Then send this instruction:</p>
-<div class="code"><pre>Build the Foggy Mirror app described in the attached prompt. Implement it in this project, install the dependencies, and run it locally. Check for build errors and fix them. Tell me the exact URL to open and anything I need to test with my camera. Do not stop at a plan or static mockup.</pre><button class="copy" type="button" aria-label="Copy build instruction">Copy</button></div>
-      <p>This is a detailed build. Expect to test and refine it over a few rounds; a generated first version may not get every gesture right.</p>
-      <h2 id="run">3. Open your mirror</h2>
-      <p>Open the local URL your assistant gives you and keep the development server running. Click <strong>Step up to the mirror</strong>, allow camera access, and wait for tracking to load. Face the camera with your mouth closed for the initial calibration.</p>
-      <p>Use <code>localhost</code> while developing, or HTTPS for a published version. Camera access requires a <a class="inline" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia" target="_blank" rel="noopener noreferrer">secure browser context</a>.</p>
-      <div class="note">The prompt asks for camera processing in your browser and no microphone access. Have your assistant verify the generated app doesn’t upload camera frames. Initial setup still needs internet access to load the tracking models.</div>
-      <h2 id="try">4. Test the little moments</h2>
-      <ol>
-        <li><strong>Make fog.</strong> Open your mouth. Fog should spread from your mouth’s position; close it to stop adding more.</li>
-        <li><strong>Write.</strong> Raise just your index finger, with your other fingers curled. Move slowly across the fog. An open palm or fist should stop writing.</li>
-        <li><strong>Start again.</strong> Open your mouth again. Fresh fog should cover your writing.</li>
-        <li><strong>Leave a kiss.</strong> Pucker with your mouth closed. A lip print should appear; hold for about a second to draw a heart around it.</li>
-        <li><strong>Let it fade.</strong> Stop adding fog and watch it evaporate. The prompt targets roughly 30 seconds; tune this by eye.</li>
-        <li><strong>Save it.</strong> Try Clear mirror and Save mirror. The saved PNG should leave out the fingertip cursor.</li>
-      </ol>
-      <p>For the fallback mode, drag with your mouse or finger to write. With a keyboard, hold <strong>Space</strong> to add fog at the cursor, press <strong>K</strong> for a kiss, or <strong>H</strong> for a kiss heart. On touch-only devices, ask your assistant to add visible buttons for these actions.</p>
-      <h2 id="refine">5. Fix one thing at a time</h2>
-      <p>Tell your assistant what you did, what happened, and what you expected. Start with the interactions before polishing the look.</p>
+      <h2 id="run">2. Build it</h2>
+      <p>Start an empty project in your coding assistant. Add the prompt, then send:</p>
+      <div class="code"><pre>Build this Foggy Mirror app. Install the dependencies, fix any build errors, and run it locally. Give me the URL to open.</pre><button class="copy" type="button" aria-label="Copy build instruction">Copy</button></div>
+      <p>Open the URL, allow your camera, and keep your mouth closed briefly while tracking loads. Keep the development server running.</p>
+      <h2 id="try">3. Try it</h2>
       <ul>
-        <li><strong>No camera:</strong> check browser permissions and the local URL. Try the mouse fallback to check whether rendering works.</li>
-        <li><strong>No fog:</strong> keep your face visible in good light. Ask the assistant to check model loading and mouth calibration.</li>
-        <li><strong>Writing is offset or backwards:</strong> ask it to use the same mirroring and cover-fit mapping for the webcam and fingertip.</li>
-        <li><strong>A fist draws:</strong> ask it to inspect the finger-bend detection. Add <code>?debug</code> to the app’s URL to see the readout requested in the prompt.</li>
-        <li><strong>It feels slow:</strong> ask it to lower the fog resolution and profile tracking performance. The prompt’s 60 FPS is a target, not a guarantee on every device.</li>
+        <li><strong>Open your mouth</strong> → fog the mirror.</li>
+        <li><strong>Raise only your index finger</strong> → write in the fog.</li>
+        <li><strong>Pucker your lips</strong> → leave a kiss. Hold for about a second for a heart.</li>
+        <li><strong>Open your mouth again</strong> → cover your writing with fresh fog.</li>
       </ul>
-<div class="code"><pre>When I raise only my index finger, the cleared stroke appears away from my fingertip. Check the mirrored camera coordinates, cover-fit cropping, and screen scaling. Fix the mapping so the stroke stays under my fingertip at different window sizes. Keep the existing visual design.</pre><button class="copy" type="button" aria-label="Copy refinement example">Copy</button></div>
-      <h2 id="share">6. Make it yours and share</h2>
-      <p>Try warmer lighting, a different intro line, or a softer fog colour. Keep the controls simple so the mirror stays immersive.</p>
-      <p>When the gestures work, ask your assistant to build the production version and help publish it on an HTTPS host. Test that published URL on a second device, including camera denial and the fallback controls, before sharing it.</p>
-      <p class="guide-credit">Built around my Foggy Mirror prompt. Your generated result will depend on the coding assistant, browser, and hardware—use the gesture checklist to make it your own.</p>
+      <p>No camera? Drag to write, hold <strong>Space</strong> to fog, or press <strong>K</strong> to kiss.</p>
+      <div class="note">Fog follows your mouth opening, not actual breath. No microphone needed. If a gesture feels off, tell your assistant what happened and ask it to fix that interaction.</div>
       <p class="copy-status" role="status" aria-live="polite"></p>
     </article>
     <footer>
