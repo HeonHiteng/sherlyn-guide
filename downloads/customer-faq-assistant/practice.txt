@@ -1,0 +1,6 @@
+Fictional policy: Studio Workshop, version 2026-11-20
+[P1] Workshops are online and last 90 minutes.
+[P2] A recording is available to registered attendees for 7 days after the workshop.
+[P3] Cancellations at least 48 hours before the workshop receive a full refund. Later cancellations are non-refundable.
+[P4] To request a cancellation, email support@example.com with the booking reference.
+[P5] This document does not specify pricing, group discounts or rescheduling rules.

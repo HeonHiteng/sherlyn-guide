@@ -1,0 +1,5 @@
+Fictional source pack for week 2026-11-16 through 2026-11-22. These are practice excerpts, not real news.
+[S1] Product notes, published 2026-11-18. Source locator: sample-source-1. Version 2 adds CSV export to the dashboard. Available to all accounts. No price change is mentioned.
+[S2] Product notes, published 2026-11-20. Source locator: sample-source-2. Offline mode is planned for December, with no confirmed launch date.
+[S3] Blog recap, published 2026-11-21. Source locator: sample-source-3. Repeats the CSV export announcement from S1; no additional features.
+[S4] Product notes, published 2026-11-10. Source locator: sample-source-4. Version 1.9 improved keyboard navigation.

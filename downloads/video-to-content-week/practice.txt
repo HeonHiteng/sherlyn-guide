@@ -1,0 +1,5 @@
+Fictional video transcript: A better AI prompt
+[00:00–00:20] When an AI answer feels vague, give it a specific task. Instead of “help with content,” ask for three hooks for a 30-second video about study habits.
+[00:20–00:40] Give context: who is watching, what they already know, and the tone you want. I might say: university students, first time using AI, friendly and direct.
+[00:40–01:00] Define the output: three options, under twelve words each, with no unsupported claims. Then compare the options and edit the one that sounds like you.
+[01:00–01:20] Before posting, check facts and remove anything you cannot support. AI drafts save a starting step, but you still own the final words.

@@ -1,0 +1,1 @@
+Practice idea: Build a simple study timer in one HTML file. A student should choose 5, 15 or 25 minutes, start, pause and reset. It should work on phones. No account, data collection or backend. Show completion visibly; no sound is required. Reset should restore the selected duration and stop the timer.

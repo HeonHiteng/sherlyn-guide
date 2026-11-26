@@ -1,0 +1,6 @@
+row_id,order_id,name,date,amount,currency
+r1,001,Ana Lee,2026-11-01,120.00,SGD
+r2,001, Ana Lee ,2026-11-01,120.00,sgd
+r3,002,Bo Tan,03/04/2026,80,SGD
+r4,003,Chen Lim,2026-11-05,,SGD
+r5,004,Dina Ong,2026-11-06,0,SGD

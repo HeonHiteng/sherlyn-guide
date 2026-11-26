@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf8ff">
+<meta name="color-scheme" content="light">
+<title>Write an AI project brief you can actually test · Sherlyn</title>
+<meta name="description" content="Turn an app idea into a build specification and acceptance checklist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=interactions-20261031">
+<link rel="stylesheet" href="../guide-examples.css?v=1">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap nav-shell">
+    <nav aria-label="Main navigation">
+      <a href="../index.html" class="brand"><span class="avatar avatar-photo"><img src="../profile.jpg" alt="" width="36" height="36"></span>Sherlyn Heon</a>
+      <div class="links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#guides">Guides</a>
+        <a href="../learn.html">AI Vibe</a>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap" id="main">
+    <article class="article hermes-guide">
+      <a href="../index.html#guides" class="back">← All guides</a>
+<div class="tags"><span class="chip">Creative coding</span><span class="chip">Worked example</span></div>
+<h1>Write an AI project brief you can actually test</h1><p class="lede">Turn an app idea into a build specification and acceptance checklist.</p>
+<div class="note">What you need: an AI chat tool that accepts pasted text, plus a text editor or spreadsheet. Allow 20–40 minutes. No API or paid automation required; your chat tool’s usage limits apply.</div>
+<p><a class="btn btn-accent" href="#outcome">See the example ↓</a></p>
+<section id="outcome" class="worked-outcome"><div class="mono">What you’ll make</div><h2>Example outcome</h2><p>Worked example using the fictional practice file. This is a reference to compare against, not a live AI response. Wording can vary; facts and counts should match.</p><div class="connection-table" tabindex="0" role="region" aria-label="Worked example results"><table><thead><tr><th scope="col">State / action</th><th scope="col">Expected behaviour</th></tr></thead><tbody><tr><td>Choose 5 minutes</td><td>Idle display 05:00</td></tr><tr><td>Start, then pause after about 3 seconds</td><td>About 04:57; paused display stops changing</td></tr><tr><td>Resume</td><td>Continue from remaining time</td></tr><tr><td>Reset</td><td>05:00 and idle</td></tr><tr><td>Change duration while running</td><td>Disabled until reset (explicit design assumption)</td></tr><tr><td>Time reaches zero</td><td>00:00 with visible Complete message; no negative count</td></tr></tbody></table></div><p><a class="inline" href="../downloads/reusable-ai-project-brief/worked-example.csv" download>Download this example CSV ↓</a></p></section>
+<h2>1. Start with the practice file</h2><p><a class="inline" href="../downloads/reusable-ai-project-brief/practice.txt" download>Download the practice TXT ↓</a>. Open it in a text editor, copy all its contents and paste them into a new AI chat. Alternatively attach the file if your tool supports uploads. Ask the AI to confirm the source is readable before continuing.</p>
+<details><summary>View the practice input</summary><div class="code"><pre>Practice idea: Build a simple study timer in one HTML file. A student should choose 5, 15 or 25 minutes, start, pause and reset. It should work on phones. No account, data collection or backend. Show completion visibly; no sound is required. Reset should restore the selected duration and stop the timer.
+</pre><button class="copy" type="button" aria-label="Copy tutorial prompt">Copy</button></div></details>
+<h2>2. Run the prompt</h2><p>Send this in the same chat after the source. It specifies both the output and how to handle missing information.</p><div class="code"><pre>Turn this idea into a build brief with: user goal, scope, explicit non-goals, UI states, state-transition rules and acceptance tests with inputs and expected results. Use plain HTML/CSS/JS in one index.html. Timer accuracy must be based on elapsed time rather than counting interval callbacks. Define what happens when changing duration during a session. Ask only questions blocking implementation; otherwise label assumptions. Do not claim implementation or tests have run.</pre><button class="copy" type="button" aria-label="Copy tutorial prompt">Copy</button></div><p><a class="inline" href="../downloads/reusable-ai-project-brief/prompt.txt" download>Download the prompt ↓</a></p>
+<h2>3. Check the result</h2><p>The brief must define pause, resume, reset and completion. It must distinguish a stated requirement from an assumption, and include a phone-width test. A checklist alone is not evidence that the built timer passes.</p><p>If it fails, point to the exact source line and ask for a corrected result. Check again; do not accept a confident explanation instead of matching evidence.</p>
+<h2>4. Use it for your own work</h2><p>Give the reviewed brief to your coding assistant and ask it to build index.html. Open it in a browser, run each acceptance case, and report failures with expected versus actual behaviour. For a quick completion test, ask for a temporary 5-second test preset, then remove it before publishing. The worked example below is a specification, not a finished timer.</p>
+<details><summary>If your result looks wrong</summary><p>Start a fresh chat with only the intended source and prompt. For missing output, ask the AI to return plain text or a CSV code block you can save yourself. For large files, process labelled batches and reconcile IDs and counts before combining. Remove private details you do not need before using your own data.</p></details>
+<p class="note">Optional upload help: <a class="inline" href="https://support.google.com/gemini/answer/14903178">Google’s file attachment instructions</a>. Pasting the small practice input works without file-upload features.</p>
+      <p class="copy-status" role="status" aria-live="polite"></p>
+    </article>
+    <footer>
+      <span>© 2026 Sherlyn</span>
+      <div class="fl"><a href="../index.html#about">About</a><a href="../index.html#guides">Guides</a></div>
+    </footer>
+  </main>
+  <script>
+    document.querySelectorAll('.copy').forEach(button => {
+      button.addEventListener('click', async () => {
+        const status = document.querySelector('.copy-status');
+        try {
+          await navigator.clipboard.writeText(button.previousElementSibling.textContent);
+          button.textContent = 'Copied';
+          status.textContent = button.getAttribute('aria-label').replace(/^Copy /, '') + ' copied.';
+          setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+        } catch {
+          button.textContent = 'Select text';
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(button.previousElementSibling);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          status.textContent = 'Copy was unavailable. The text is selected so you can copy it manually.';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

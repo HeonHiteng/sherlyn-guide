@@ -1,0 +1,5 @@
+Theme,Unique customers,Evidence / proposed action
+Mobile checkout,"2 (C01, C02)",F01–F03 · Reproduce on mobile first; potentially blocks payment.
+Invoice discovery,"2 (C04, C05)",F05–F06 · Test whether buyers can find the download link.
+Dark theme,1 (C03),F04 · Explore demand after blocking issues.
+Positive: quick setup,1 (C06),"F07 · Keep as positive feedback, not a feature request."

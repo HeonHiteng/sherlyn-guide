@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf8ff">
+<meta name="color-scheme" content="light">
+<title>Clean a messy spreadsheet with AI · Sherlyn</title>
+<meta name="description" content="Standardise safe fields, isolate ambiguous dates and keep a change log.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=interactions-20261031">
+<link rel="stylesheet" href="../guide-examples.css?v=1">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap nav-shell">
+    <nav aria-label="Main navigation">
+      <a href="../index.html" class="brand"><span class="avatar avatar-photo"><img src="../profile.jpg" alt="" width="36" height="36"></span>Sherlyn Heon</a>
+      <div class="links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#guides">Guides</a>
+        <a href="../learn.html">AI Vibe</a>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap" id="main">
+    <article class="article hermes-guide">
+      <a href="../index.html#guides" class="back">← All guides</a>
+<div class="tags"><span class="chip">Data skills</span><span class="chip">Worked example</span></div>
+<h1>Clean a messy spreadsheet with AI</h1><p class="lede">Standardise safe fields, isolate ambiguous dates and keep a change log.</p>
+<div class="note">What you need: an AI chat tool that accepts pasted text, plus a text editor or spreadsheet. Allow 20–40 minutes. No API or paid automation required; your chat tool’s usage limits apply.</div>
+<p><a class="btn btn-accent" href="#outcome">See the example ↓</a></p>
+<section id="outcome" class="worked-outcome"><div class="mono">What you’ll make</div><h2>Example outcome</h2><p>Worked example using the fictional practice file. This is a reference to compare against, not a live AI response. Wording can vary; facts and counts should match.</p><div class="connection-table" tabindex="0" role="region" aria-label="Worked example results"><table><thead><tr><th scope="col">Row</th><th scope="col">Order ID</th><th scope="col">Amount SGD</th><th scope="col">Review status</th></tr></thead><tbody><tr><td>r1</td><td>001</td><td>120.00</td><td>Ready; r2 removed as duplicate</td></tr><tr><td>r3</td><td>002</td><td>80.00</td><td>Date ambiguous; original 03/04/2026 retained</td></tr><tr><td>r4</td><td>003</td><td>Missing</td><td>Amount needs review</td></tr><tr><td>r5</td><td>004</td><td>0.00</td><td>Valid zero</td></tr></tbody></table></div><p><a class="inline" href="../downloads/clean-a-messy-spreadsheet/worked-example.csv" download>Download this example CSV ↓</a></p></section>
+<h2>1. Start with the practice file</h2><p><a class="inline" href="../downloads/clean-a-messy-spreadsheet/practice.csv" download>Download the practice CSV ↓</a>. Open it in a text editor, copy all its contents and paste them into a new AI chat. Alternatively attach the file if your tool supports uploads. Ask the AI to confirm the source is readable before continuing.</p>
+<details><summary>View the practice input</summary><div class="code"><pre>row_id,order_id,name,date,amount,currency
+r1,001,Ana Lee,2026-11-01,120.00,SGD
+r2,001, Ana Lee ,2026-11-01,120.00,sgd
+r3,002,Bo Tan,03/04/2026,80,SGD
+r4,003,Chen Lim,2026-11-05,,SGD
+r5,004,Dina Ong,2026-11-06,0,SGD
+</pre><button class="copy" type="button" aria-label="Copy tutorial prompt">Copy</button></div></details>
+<h2>2. Run the prompt</h2><p>Send this in the same chat after the source. It specifies both the output and how to handle missing information.</p><div class="code"><pre>Clean this CSV without overwriting the original. Preserve row_id, order_id strings and leading zeros. Trim name whitespace and uppercase currency. The date locale is unknown: do not guess 03/04/2026. Do not replace missing amounts with zero. Identify duplicates only after safe whitespace/currency normalisation; keep the earliest row and log which row was removed. Produce cleaned.csv, exceptions.csv and changes.csv as separate CSV code blocks. Keep every unique unresolved row in cleaned.csv with a review status. Explain the input/output row counts.</pre><button class="copy" type="button" aria-label="Copy tutorial prompt">Copy</button></div><p><a class="inline" href="../downloads/clean-a-messy-spreadsheet/prompt.txt" download>Download the prompt ↓</a></p>
+<h2>3. Check the result</h2><p>Five input rows must become four retained rows plus one logged duplicate. Only r3 and r4 need review. Known retained amounts sum to 200, not 320. This is not a complete total because r4 is missing. Order IDs must retain leading zeros.</p><p>If it fails, point to the exact source line and ask for a corrected result. Check again; do not accept a confident explanation instead of matching evidence.</p>
+<h2>4. Use it for your own work</h2><p>Save each CSV code block as a UTF-8 .csv file. Import into a new spreadsheet with automatic text-to-number/date conversion disabled where available, so 001 stays 001. Verify row counts and the change log before replacing a working dataset. Ask the source owner to resolve r3’s date and r4’s missing amount.</p>
+<details><summary>If your result looks wrong</summary><p>Start a fresh chat with only the intended source and prompt. For missing output, ask the AI to return plain text or a CSV code block you can save yourself. For large files, process labelled batches and reconcile IDs and counts before combining. Remove private details you do not need before using your own data.</p></details>
+<p class="note">Optional upload help: <a class="inline" href="https://support.google.com/gemini/answer/14903178">Google’s file attachment instructions</a>. Pasting the small practice input works without file-upload features.</p>
+      <p class="copy-status" role="status" aria-live="polite"></p>
+    </article>
+    <footer>
+      <span>© 2026 Sherlyn</span>
+      <div class="fl"><a href="../index.html#about">About</a><a href="../index.html#guides">Guides</a></div>
+    </footer>
+  </main>
+  <script>
+    document.querySelectorAll('.copy').forEach(button => {
+      button.addEventListener('click', async () => {
+        const status = document.querySelector('.copy-status');
+        try {
+          await navigator.clipboard.writeText(button.previousElementSibling.textContent);
+          button.textContent = 'Copied';
+          status.textContent = button.getAttribute('aria-label').replace(/^Copy /, '') + ' copied.';
+          setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+        } catch {
+          button.textContent = 'Select text';
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(button.previousElementSibling);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          status.textContent = 'Copy was unavailable. The text is selected so you can copy it manually.';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

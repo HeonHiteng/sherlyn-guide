@@ -1,0 +1,7 @@
+Fictional meeting: 2026-11-23, Asia/Singapore
+[00:10] Maya: We agreed to launch the signup page on 30 November 2026.
+[00:25] Leo: I will send the first page draft by 25 November 2026.
+[00:45] Maya: I will review that draft by 26 November 2026.
+[01:05] Sam: We still need someone to check the mobile layout. No owner yet.
+[01:20] Leo: Maybe we could add a referral reward later. We have not agreed to it.
+[01:35] Maya: Yes, rewards are not in this launch.

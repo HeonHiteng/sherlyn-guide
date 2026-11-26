@@ -1,0 +1,7 @@
+State / action,Expected behaviour
+Choose 5 minutes,Idle display 05:00
+"Start, then pause after about 3 seconds",About 04:57; paused display stops changing
+Resume,Continue from remaining time
+Reset,05:00 and idle
+Change duration while running,Disabled until reset (explicit design assumption)
+Time reaches zero,00:00 with visible Complete message; no negative count
