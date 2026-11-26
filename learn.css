@@ -37,3 +37,63 @@
 .answer:has(input:checked) .answer-letter{background:#8b2bbd;color:#fff}.answer:has(input:checked){box-shadow:0 3px 0 #dbc4e9}
 @media(max-width:640px){.welcome-grid{padding:25px 22px;border-radius:24px}.welcome-art{margin-top:14px}.label-one{left:0}.label-two{right:0}.style-card{padding:6px 5px 14px}.style-mini .companion{max-width:100px}.mission-map{padding:12px;gap:10px}.map-node{min-height:215px}.value-strip{padding:20px;gap:20px}}
 @media(prefers-reduced-motion:reduce){.learn .btn:hover,.learn .btn:active,.style-card:hover{transform:none}}
+/* Clean, compact layouts across phone, tablet, and desktop. */
+.learn{max-width:1120px;background:none}
+.learn :is(.welcome-grid,.result-grid,.dashboard-grid,.mission-map,.style-grid)>*{min-width:0}
+.learn :is(h1,h2,h3,p,button,label){overflow-wrap:break-word}
+.learn .btn{min-height:44px;justify-content:center;line-height:1.4}
+.learn .btn-soft,.panel,.style-card{box-shadow:none}
+.learn .btn-accent{box-shadow:0 3px 0 #5c217c}
+.learn .btn-accent:hover{box-shadow:0 4px 0 #50206b;transform:translateY(-1px)}
+.welcome-grid{background:#f2eafa;border-radius:24px;padding:clamp(24px,4vw,44px);gap:24px}
+.welcome-art{min-height:300px}.welcome-art::after{font-size:36px}
+.floating-label{box-shadow:none;border:1px solid #e3d3ed;transform:rotate(-3deg)}
+.label-two{transform:rotate(3deg)}
+.panel{border-radius:20px}.pill{background:#f0e7f9;border-color:#e1ceef;color:#64417e}
+.quest-top{padding:8px 0 20px;margin-bottom:24px}.quest-tools{flex-wrap:wrap;justify-content:flex-end}
+.quest-brand{white-space:nowrap}.quest-brand span{box-shadow:none;transform:none;border-radius:9px}
+.value-strip{background:transparent;padding:8px 0 24px;border-bottom:1px solid #e6def1;border-radius:0}
+.style-card:hover{transform:translateY(-3px);box-shadow:none}.style-mini .companion{max-width:125px}
+.mission-map{background:#faf7fd;border-radius:16px;padding:14px}.map-node,.map-node.current,.map-node.complete{box-shadow:none}
+.map-node{min-height:190px}.node-orb{transform:none;box-shadow:none;border:0}
+.stats{gap:12px}.stats>div{min-width:0}.stats strong{font-size:clamp(17px,2vw,22px)}
+.learn select,.learn textarea{min-height:48px;font-size:16px;max-width:100%}
+.learn summary{min-height:44px;line-height:1.5}.order-list .btn{min-width:44px;min-height:44px}
+.answer{min-height:58px}.answer-list{gap:10px}.answer-list .answer{margin:0}.answer-letter{flex-shrink:0}
+.quiz-panel{border-top-width:3px}.quiz-panel legend{font-size:clamp(23px,3vw,30px)}
+.learn footer{gap:16px;flex-wrap:wrap}.file-button:focus-within{outline:3px solid #8b2bbd;outline-offset:4px}
+@media(min-width:641px) and (max-width:900px){.welcome-grid{grid-template-columns:1fr 0.8fr}.learn h1{font-size:44px}.welcome-art{min-height:260px}.floating-label{font-size:10px;padding:8px}.label-one{left:0}.label-two{right:0}.dashboard-grid{grid-template-columns:1fr 0.8fr}}
+@media(max-width:640px){
+ .learn{padding:16px 16px 24px}.learn h1{font-size:clamp(30px,8.7vw,39px);letter-spacing:-1.25px}
+ .quest-top{flex-wrap:wrap;gap:12px}.quest-tools{gap:8px}.quest-top .btn{font-size:12px;min-height:44px;padding:10px 12px}
+ .quest-brand{font-size:11px}.quest-brand span{width:27px;height:27px;font-size:20px}
+ .welcome-grid{padding:24px 20px;gap:4px}.welcome-art{min-height:205px;max-width:280px;margin-top:6px}
+ .welcome-art .companion{max-width:215px}.welcome-art::after{right:8px;top:20px}.floating-label{display:none}
+ .welcome-grid .actions{display:grid;grid-template-columns:1fr;margin-top:20px;gap:10px}
+ .learn .intro{font-size:16px}.learn .fine{font-size:12px}.welcome-grid .fine{margin-bottom:0}
+ .value-strip{display:none}.panel{padding:20px;margin-bottom:16px}
+ .section-title{flex-wrap:wrap;gap:8px}.learn h2{font-size:24px}.continue-panel h2{font-size:27px}
+ .style-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:18px 0}.style-card strong{font-size:12px}
+ .style-mini .companion{max-width:90px}.dashboard-grid{gap:0}.dash-heading{margin:24px 0 16px}
+ .companion-panel{display:grid;grid-template-columns:110px minmax(0,1fr);align-items:center;text-align:left;gap:0 16px;background:#faf5ff}
+ .companion-panel>.eyebrow{grid-column:1/-1;margin:0 0 6px}.companion-panel>.companion{grid-row:2/4;width:110px}
+ .companion-panel>p:not(.eyebrow){margin:0;font-size:13px}.companion-panel .select-label{margin:8px 0 0;font-size:12px}
+ .companion-panel select{padding:10px 8px}.stats{padding:12px;gap:8px}.stats span{font-size:11px}
+ .mission-map{grid-template-columns:1fr;padding:10px;gap:10px}.map-node{display:grid;grid-template-columns:40px minmax(0,1fr);gap:0 12px;min-height:0;padding:15px 12px}
+ .node-orb{grid-row:1/4;width:38px;height:38px;border-radius:12px;margin:0;align-self:center}
+ .map-node strong{font-size:15px;margin-bottom:3px}.map-node small{grid-column:2;margin:2px 0}
+ .badge-grid{gap:8px}.award{padding:12px}.award small{font-size:12px}.award strong{font-size:13px}
+ .result-grid{gap:18px}.result-art{padding:14px}.result-art .companion{max-width:175px}
+ .result-grid .actions{display:grid;grid-template-columns:1fr}.quiz-panel{margin:12px auto}
+ .quiz-panel legend{padding-top:20px}.answer{padding:14px 12px;gap:10px}.answer span:not(.answer-letter){flex:1}
+ .quiz-panel .between{display:grid;grid-template-columns:1fr 1fr;gap:8px}.quiz-panel .between .btn{padding:12px 8px;font-size:13px}
+ .lesson .section-title .pill{margin-left:0}.settings .actions{display:grid;grid-template-columns:1fr}
+ .learn footer{font-size:12px;padding:24px 0}
+}
+@media(max-width:360px){.quest-top{display:grid;grid-template-columns:1fr}.quest-tools{justify-content:flex-start}.quest-tools .btn{flex:1}.companion-panel{grid-template-columns:82px minmax(0,1fr);gap:0 10px}.companion-panel>.companion{width:82px}.panel{padding:16px}.welcome-grid{padding:22px 16px}}
+@media(hover:none){.learn .btn:hover,.style-card:hover,.map-node:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.learn .btn:hover,.learn .btn:active,.style-card:hover{transform:none}}
+/* Override the homepage's shared horizontal form rule inside lessons. */
+.learn .lesson form{display:block;min-width:0;width:100%}
+.learn .lesson form>*{min-width:0;max-width:100%}
+.learn .lesson input[type=radio]{flex:0 0 17px;width:17px;height:17px;padding:0;margin:0}
