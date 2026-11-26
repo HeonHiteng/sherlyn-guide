@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf8ff">
+<meta name="color-scheme" content="light">
+<title>Turn content analytics into a dashboard · Sherlyn</title>
+<meta name="description" content="Find which posts earn saves and shares—not just views.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=interactions-20261031">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap nav-shell">
+    <nav aria-label="Main navigation">
+      <a href="../index.html" class="brand"><span class="avatar avatar-photo"><img src="../profile.jpg" alt="" width="36" height="36"></span>Sherlyn Heon</a>
+      <div class="links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#guides">Guides</a>
+        <a href="../learn.html">AI Vibe</a>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap" id="main">
+    <article class="article hermes-guide">
+      <a href="../index.html#guides" class="back">← All guides</a>
+<div class="tags"><span class="chip">Creator tools</span><span class="chip">Intermediate</span></div><h1>Turn content analytics into a dashboard</h1><p class="lede">Find which posts earn saves and shares—not just views.</p><div class="note">Google Sheets · an AI chat tool. Allow 30–45 minutes. Use the sample CSV; optional AI subscriptions depend on your tool.</div><h2 id="step-1">1. Import the sample</h2><p><a class="inline" href="../downloads/content-analytics.csv">Download the fictional analytics CSV ↓</a> and import it into a new Google Sheet. Name the tab Data. For your own export, use one row per post, one platform, one date range and comparable post ages.</p><h2 id="step-2">2. Calculate consistent metrics</h2><p>The sample columns are A: post, B: format, C: reach, D: likes, E: comments, F: saves, G: shares. Add H: Engagement/reach and I: Save rate. Put these formulas in row 2, fill down and format as percentages.</p><div class="code"><pre>H2: =IF(C2&gt;0,SUM(D2:G2)/C2,&quot;&quot;)
+I2: =IF(C2&gt;0,F2/C2,&quot;&quot;)</pre><button class="copy" type="button" aria-label="Copy example">Copy</button></div><p>These are your defined metrics, not necessarily the platform’s engagement-rate formula. Keep zero reach blank. Do not average post rates to get an account rate: use total interactions divided by total reach, and label it a post-reach-weighted rate because audiences can overlap.</p><h2 id="step-3">3. Make two useful views</h2><p>Select A1:I7, choose Insert → Pivot table, and create it on a new sheet. Use format as Rows and SUM of reach, saves and shares as Values. Next, select post and Save rate on Data to insert a bar chart; sort a copy of the rows by save rate first. Label the chart “Saves ÷ reach by post”.</p><h2 id="step-4">4. Ask AI for testable ideas</h2><p>Give your AI the sample data or an anonymised export, plus this prompt:</p><div class="code"><pre>Analyze this content dataset. Define engagement/reach as (likes + comments + saves + shares) / reach, and save rate as saves / reach. Exclude zero-reach rows from rate comparisons. Report three observations with post IDs and actual numbers, then two experiments. Distinguish observations from hypotheses. Do not claim that format caused performance or that this tiny sample predicts future results.</pre><button class="copy" type="button" aria-label="Copy example">Copy</button></div><h2 id="step-5">5. Verify before acting</h2><p>Sample check: P01 has 100 saves from 2,000 reach = <strong>5%</strong>. P02 has 200 saves from 10,000 reach = <strong>2%</strong>. P01 wins on save rate; P02 wins on total saves. P06 has zero reach, so its rate must be blank.</p><p>Pick one experiment, such as changing only the opening hook across comparable posts. Keep the same reporting window. If a formula shows an error, your sheet locale may require semicolons instead of commas.</p><h2>Reference</h2><p><a class="inline" href="https://support.google.com/docs/answer/63824">Google Sheets chart help</a></p>      <p class="copy-status" role="status" aria-live="polite"></p>
+    </article>
+    <footer>
+      <span>© 2026 Sherlyn</span>
+      <div class="fl"><a href="../index.html#about">About</a><a href="../index.html#guides">Guides</a></div>
+    </footer>
+  </main>
+  <script>
+    document.querySelectorAll('.copy').forEach(button => {
+      button.addEventListener('click', async () => {
+        const status = document.querySelector('.copy-status');
+        try {
+          await navigator.clipboard.writeText(button.previousElementSibling.textContent);
+          button.textContent = 'Copied';
+          status.textContent = button.getAttribute('aria-label').replace(/^Copy /, '') + ' copied.';
+          setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+        } catch {
+          button.textContent = 'Select text';
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(button.previousElementSibling);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          status.textContent = 'Copy was unavailable. The text is selected so you can copy it manually.';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

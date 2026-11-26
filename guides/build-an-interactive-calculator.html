@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf8ff">
+<meta name="color-scheme" content="light">
+<title>Build an interactive calculator with AI · Sherlyn</title>
+<meta name="description" content="Create a project estimate calculator with clear maths and a shareable link.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=interactions-20261031">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap nav-shell">
+    <nav aria-label="Main navigation">
+      <a href="../index.html" class="brand"><span class="avatar avatar-photo"><img src="../profile.jpg" alt="" width="36" height="36"></span>Sherlyn Heon</a>
+      <div class="links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#guides">Guides</a>
+        <a href="../learn.html">AI Vibe</a>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap" id="main">
+    <article class="article hermes-guide">
+      <a href="../index.html#guides" class="back">← All guides</a>
+<div class="tags"><span class="chip">Creative coding</span><span class="chip">Intermediate</span></div><h1>Build an interactive calculator with AI</h1><p class="lede">Create a project estimate calculator with clear maths and a shareable link.</p><div class="note">An AI coding assistant · browser · optional GitHub account. Allow 45–60 minutes. AI plan costs vary; the calculator itself needs no AI API.</div><h2 id="step-1">1. Define the calculation</h2><p>Build a project cost estimator: hours × hourly rate + fixed costs, then add a contingency percentage. This is a budgeting example, not a recommended pricing strategy. Decide the formula before asking AI to design anything.</p><div class="code"><pre>subtotal = hours × hourlyRate + fixedCosts
+total = subtotal × (1 + contingencyPercent / 100)</pre><button class="copy" type="button" aria-label="Copy example">Copy</button></div><h2 id="step-2">2. Build the first version</h2><p>Paste this into your coding assistant:</p><div class="code"><pre>Build a responsive project estimate calculator in one index.html with CSS and JavaScript. Use a light background and purple buttons (#8b2bbd; hover #681d91). Inputs: hours, hourly rate, fixed costs, contingency percent. Display subtotal, contingency amount and total to two decimals. Formula: subtotal = hours * rate + fixedCosts; total = subtotal * (1 + contingency / 100). Use SGD labels. Validate finite non-negative inputs; require hours and rate above zero, contingency 0–100. Treat blank required inputs as invalid, not zero. Show inline errors, accessible labels, keyboard focus and a polite result announcement on Calculate. Include Calculate and Reset buttons. Fit a 320px phone screen without horizontal scrolling. No external services, login, tracking or API keys. Explain how to open the file locally.</pre><button class="copy" type="button" aria-label="Copy example">Copy</button></div><h2 id="step-3">3. Test the maths</h2><p>Open index.html in your browser. Enter 10 hours, rate 50, fixed costs 100 and contingency 10. Expect subtotal <strong>600.00</strong>, contingency <strong>60.00</strong>, total <strong>660.00</strong>. With contingency 0, the total should be 600.00.</p><p>Try a blank hours field, a negative rate and contingency 101: each should show an error instead of a result. Check decimal hours (1.5 × 50 = 75), Reset, keyboard navigation and a narrow phone screen. Ask AI to fix any failing case, then rerun it.</p><h2 id="step-4">4. Make the result explain itself</h2><div class="code"><pre>Show a breakdown below the result: hours × rate, fixed costs, contingency and total. Add “Estimate only; excludes taxes unless included in your inputs.” Keep the calculation deterministic in JavaScript. Add no AI calls. Preserve the validated formula and test cases.</pre><button class="copy" type="button" aria-label="Copy example">Copy</button></div><p>Keep totals rounded for display, not at each intermediate calculation. Make labels understandable without hovering.</p><h2 id="step-5">5. Share it</h2><p>Create a public GitHub repository, upload index.html to the root and commit it. In Settings → Pages, choose Deploy from a branch, select your main branch and / (root), then save. Wait for deployment and open the site URL shown there. Run the 660.00 test again on the published page.</p><p>If you see a 404, confirm the file is named index.html, the selected branch contains it, and the Pages deployment succeeded. Only publish files intended to be public.</p><h2>Reference</h2><p><a class="inline" href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub Pages publishing setup</a></p>      <p class="copy-status" role="status" aria-live="polite"></p>
+    </article>
+    <footer>
+      <span>© 2026 Sherlyn</span>
+      <div class="fl"><a href="../index.html#about">About</a><a href="../index.html#guides">Guides</a></div>
+    </footer>
+  </main>
+  <script>
+    document.querySelectorAll('.copy').forEach(button => {
+      button.addEventListener('click', async () => {
+        const status = document.querySelector('.copy-status');
+        try {
+          await navigator.clipboard.writeText(button.previousElementSibling.textContent);
+          button.textContent = 'Copied';
+          status.textContent = button.getAttribute('aria-label').replace(/^Copy /, '') + ' copied.';
+          setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+        } catch {
+          button.textContent = 'Select text';
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(button.previousElementSibling);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          status.textContent = 'Copy was unavailable. The text is selected so you can copy it manually.';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

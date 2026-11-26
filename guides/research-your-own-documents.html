@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf8ff">
+<meta name="color-scheme" content="light">
+<title>Build a research assistant for your documents · Sherlyn</title>
+<meta name="description" content="Compare documents, trace claims to sources, and find what is missing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=interactions-20261031">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap nav-shell">
+    <nav aria-label="Main navigation">
+      <a href="../index.html" class="brand"><span class="avatar avatar-photo"><img src="../profile.jpg" alt="" width="36" height="36"></span>Sherlyn Heon</a>
+      <div class="links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#guides">Guides</a>
+        <a href="../learn.html">AI Vibe</a>
+      </div>
+    </nav>
+  </div>
+
+  <main class="wrap" id="main">
+    <article class="article hermes-guide">
+      <a href="../index.html#guides" class="back">← All guides</a>
+<div class="tags"><span class="chip">Research</span><span class="chip">Intermediate</span></div><h1>Build a research assistant for your documents</h1><p class="lede">Compare documents, trace claims to sources, and find what is missing.</p><div class="note">NotebookLM · 2–3 documents you can upload. Allow 25–35 minutes. Account limits apply; this exercise needs only a small notebook.</div><h2 id="step-1">1. Start with one question</h2><p>Choose a specific question, such as “Which onboarding approach should our small team try?” Create a notebook in NotebookLM and add two or three related reports or PDFs. Name each source clearly with its title and year. Confirm the imported text is readable.</p><h2 id="step-2">2. Try a tiny practice set</h2><p>No documents ready? Add these as two separate pasted-text sources. They are fictional examples, not research evidence.</p><div class="code"><pre>Source A — Team pilot, 2025
+Twenty new staff tried a checklist. Median setup time was 40 minutes, compared with 60 minutes for the previous cohort. Teams were not randomly assigned. Satisfaction was not measured.</pre><button class="copy" type="button" aria-label="Copy example">Copy</button></div><div class="code"><pre>Source B — Team survey, 2026
+Twelve new staff tried a video walkthrough. Nine said it was useful. Setup time was not recorded. The survey was optional and there was no comparison group.</pre><button class="copy" type="button" aria-label="Copy example">Copy</button></div><h2 id="step-3">3. Build an evidence table</h2><p>Select the relevant sources and ask:</p><div class="code"><pre>Using only the selected sources, compare the onboarding approaches in a table: approach, sample size, measured outcome, limitation, supporting citation. Write “not reported” for missing information. Separate measured findings from your interpretation. Do not rank approaches measured on different outcomes.</pre><button class="copy" type="button" aria-label="Copy example">Copy</button></div><h2 id="step-4">4. Audit the answer</h2><p>Open each citation and read its supporting passage. For the practice set, checklist setup time is 40 minutes; the video study has no setup-time result. Ask “Which method improved satisfaction by 30%?” The correct response is that the sources do not establish this. A citation is a place to check, not proof that the interpretation is right.</p><h2 id="step-5">5. Turn evidence into a decision</h2><div class="code"><pre>Suggest one small follow-up test based on these sources. State what remains unknown, which metric to measure, and what evidence would change the decision. Keep recommendations separate from source-backed facts.</pre><button class="copy" type="button" aria-label="Copy example">Copy</button></div><p>Save the checked table and a short note of your own conclusion. With real papers, record study design, sample and limitations before applying the finding. If a PDF imports badly, use a readable text version and check page references against the original.</p><h2>Reference</h2><p><a class="inline" href="https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-discover-sources/">Google: sources and citations in NotebookLM</a></p>      <p class="copy-status" role="status" aria-live="polite"></p>
+    </article>
+    <footer>
+      <span>© 2026 Sherlyn</span>
+      <div class="fl"><a href="../index.html#about">About</a><a href="../index.html#guides">Guides</a></div>
+    </footer>
+  </main>
+  <script>
+    document.querySelectorAll('.copy').forEach(button => {
+      button.addEventListener('click', async () => {
+        const status = document.querySelector('.copy-status');
+        try {
+          await navigator.clipboard.writeText(button.previousElementSibling.textContent);
+          button.textContent = 'Copied';
+          status.textContent = button.getAttribute('aria-label').replace(/^Copy /, '') + ' copied.';
+          setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+        } catch {
+          button.textContent = 'Select text';
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(button.previousElementSibling);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          status.textContent = 'Copy was unavailable. The text is selected so you can copy it manually.';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
