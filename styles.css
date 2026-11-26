@@ -203,20 +203,3 @@ nav { padding-right: 22px; }
 .social-handles a { transition: color .2s ease, text-underline-offset .2s ease; }
 .social-handles a:hover { color: #681d91; text-underline-offset: 7px; }
 @media (prefers-reduced-motion: reduce) { .card-visual, .card-visual.is-tilting, .card-visual:hover, .card-visual:hover .guide-thumbnail img, .card-visual:focus-visible .guide-thumbnail img, .card-visual:hover .card-foot b, .card-visual:focus-visible .card-foot b, .btn-accent:active { transform: none; } }
-
-/* Featured experiment: a small, camera-free illustration. */
-.featured-experiment { display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:center; margin:0 0 32px; padding:32px; background:#f2eaf8; border:1px solid #dfcce9; border-radius:24px; }
-.mirror-preview { text-align:center; min-width:0; }
-.mirror-toggle { display:block; width:100%; padding:22px; border:0; border-radius:18px; background:radial-gradient(ellipse at top left,#fff8ed,#e2d4ee); cursor:pointer; font:inherit; color:#681d91; }
-.mirror-toggle[hidden] { display:none; }
-.mirror-glass { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:265px; max-width:300px; margin:auto; border:5px solid #b9a2c8; border-radius:130px 130px 32px 32px; background:linear-gradient(135deg,#f4eef8,#cdb9dd); box-shadow:inset 8px 4px 30px #ffffff80,0 16px 30px #62457e18; overflow:hidden; }
-.mirror-heart { font-family:Georgia,serif; font-size:150px; line-height:1; opacity:.15; filter:blur(8px); transform:scale(.85); transition:opacity .6s,filter .6s,transform .6s; }
-.mirror-toggle[aria-pressed="true"] .mirror-heart { opacity:1; filter:blur(0); transform:scale(1); }
-.mirror-instruction { position:absolute; bottom:20px; font-size:12px; color:#594368; }
-.preview-caption { display:block; margin-top:12px; font-size:11px; color:#695775; }
-.mirror-preview img { width:100%; height:auto; }
-.featured-copy h3 { font-size:clamp(30px,4vw,48px); line-height:1.08; letter-spacing:-1.5px; margin:16px 0; }
-.featured-copy p { color:var(--ink-soft); max-width:340px; margin:0 0 24px; }
-.feature-detail { display:block; margin-top:12px; font-size:12px; color:var(--ink-soft); }
-@media(max-width:700px) { .featured-experiment { grid-template-columns:1fr; gap:26px; padding:22px; } .mirror-glass { min-height:230px; } }
-@media(prefers-reduced-motion:reduce) { .mirror-heart { transition:none; } }
