@@ -97,3 +97,13 @@
 .learn .lesson form{display:block;min-width:0;width:100%}
 .learn .lesson form>*{min-width:0;max-width:100%}
 .learn .lesson input[type=radio]{flex:0 0 17px;width:17px;height:17px;padding:0;margin:0}
+/* AI Vibe: a quiz, a character, and one useful next step. */
+.vibe-guides{font-size:13px;color:#704785}
+.vibe-recommendation{display:grid;grid-template-columns:1fr 1.3fr;gap:28px;align-items:center}
+.vibe-recommendation img{width:100%;height:auto;border-radius:14px;background:#f4eafa}
+.vibe-recommendation .btn{margin-top:10px}
+.vibe-method{margin:24px 0;color:#655b75;font-size:14px}
+.learn .style-card{cursor:default;text-align:center}
+.learn .style-card:hover{transform:none}
+@media(max-width:640px){.vibe-recommendation{grid-template-columns:1fr;gap:18px}.vibe-recommendation .btn{width:100%}.vibe-guides{font-size:12px}}
+@media(max-width:360px){.nav-shell .links{gap:10px}.nav-shell .brand{font-size:11px}.nav-shell nav{gap:6px;padding-right:12px}.nav-shell .avatar{width:24px;height:24px}}
