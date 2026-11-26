@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=interactions-20261031">
+<link rel="stylesheet" href="styles.css?v=featured-20261126">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,7 +32,7 @@
       <div>
         <div class="mono">AI Content Creator · AI PhD Researcher</div>
         <h1>Hi, I’m Sherlyn Heon.<br><em>Let’s build it!</em></h1>
-        <p class="lede">I’m an AI content creator, PhD researcher, and founder of @ai.sherlyn. I turn complex AI ideas into practical content you can use.</p>
+        <p class="lede">I research AI—and make playful things with it. Explore my experiments, then build your own.</p>
         <div class="ctas">
           <a href="#guides" class="btn btn-accent">Read my guides ↓</a>
         </div>
@@ -50,26 +50,42 @@
           <h2>Start here</h2>
         </div>
       </div>
+      <div class="featured-experiment">
+        <div class="mirror-preview">
+          <button class="mirror-toggle" type="button" aria-pressed="false" aria-label="Reveal a heart in the illustrated mirror" hidden>
+            <span class="mirror-glass"><span class="mirror-heart" aria-hidden="true">♡</span><span class="mirror-instruction">Tap to leave a little love</span></span>
+          </button>
+          <noscript><img src="images/foggy-mirror.svg" alt="A heart drawn in a misty mirror" width="960" height="480"></noscript>
+          <span class="preview-caption">Interactive illustration · no camera needed</span>
+        </div>
+        <div class="featured-copy">
+          <div class="mono">Featured experiment</div>
+          <h3>A little fog.<br>A little magic.</h3>
+          <p>Build a webcam mirror you can fog up, write on, and blow a kiss.</p>
+          <a class="btn btn-accent" href="guides/build-a-foggy-mirror.html">Build your own mirror ↗</a>
+          <span class="feature-detail">Full prompt included</span>
+        </div>
+      </div>
       <div class="grid">
         <a href="guides/build-a-foggy-mirror.html" class="card card-visual">
           <div class="guide-thumbnail"><img src="images/foggy-mirror.svg" alt="" width="960" height="480" loading="lazy"></div>
-          <div class="tags"><span class="chip">Creative coding</span><span class="new">Latest</span></div>
+          <div class="tags"><span class="chip">Creative coding</span><span class="new">Copy-ready prompt</span></div>
           <h3>Build a foggy mirror with AI</h3>
           <p>Fog up your webcam mirror, write with your fingertip, and leave a kiss. Get the full prompt to build your own.</p>
           <div class="card-foot"><span>Prompt + tutorial</span><b>Read guide →</b></div>
         </a>
         <a href="guides/give-ai-agents-a-3d-office.html" class="card card-visual">
           <div class="guide-thumbnail"><img src="images/hermes-office.svg" alt="" width="960" height="480" loading="lazy"></div>
-          <div class="tags"><span class="chip">AI agents</span></div>
+          <div class="tags"><span class="chip">AI agents</span><span class="chip">Local setup</span></div>
           <h3>Give your AI agents a 3D office</h3>
-          <p>See your Hermes agents at work in a 3D office, follow their activity, and check their Kanban board. Free and open source.</p>
+          <p>Give your agents a place to work. Watch their activity and check their tasks.</p>
           <div class="card-foot"><span>10 min setup</span><b>Read guide →</b></div>
         </a>
         <a href="guides/connect-whatsapp-to-claude.html" class="card card-visual">
           <div class="guide-thumbnail"><img src="images/whatsapp-claude.svg" alt="" width="960" height="480" loading="lazy"></div>
-          <div class="tags"><span class="chip">AI tools</span></div>
+          <div class="tags"><span class="chip">AI tools</span><span class="chip">Local setup</span></div>
           <h3>Connect Claude to your WhatsApp</h3>
-          <p>Let Claude search your chats, catch you up on busy group chats and draft replies. Free, open source, and it runs on your own computer.</p>
+          <p>Search your chats, catch up on conversations, and draft replies with Claude.</p>
           <div class="card-foot"><span>10 min setup</span><b>Read guide →</b></div>
         </a>
       </div>
@@ -80,6 +96,6 @@
       <div class="fl"><a href="#guides">Guides</a><a href="#about">About</a></div>
     </footer>
   </main>
-  <script src="home.js?v=20261031" defer></script>
+  <script src="home.js?v=featured-20261126" defer></script>
 </body>
 </html>

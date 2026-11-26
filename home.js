@@ -32,6 +32,16 @@
     setActive(location.hash === '#guides' ? 'guides' : 'about');
   }
 
+  const mirror = document.querySelector('.mirror-toggle');
+  if (mirror) {
+    mirror.hidden = false;
+    mirror.addEventListener('click', () => {
+      const revealed = mirror.getAttribute('aria-pressed') !== 'true';
+      mirror.setAttribute('aria-pressed', String(revealed));
+      mirror.querySelector('.mirror-instruction').textContent = revealed ? 'Tap to fog it up again' : 'Tap to leave a little love';
+    });
+  }
+
   const cards = [...document.querySelectorAll('.card-visual')];
   cards.forEach(card => {
     let frame;
