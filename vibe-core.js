@@ -9,14 +9,14 @@
   ];
   // Each answer supports two preferences; no points measure knowledge or ability.
   const questions = [
-    ['A friend has a promising idea but no starting point. You…', [['Sketch what it could look like',[0,3]],['Ask questions that open new possibilities',[1,2]],['Find the smallest useful next step',[4,3]],['Compare a few directions before choosing',[5,2]]]],
-    ['An AI answer surprises you. What happens next?', [['Follow the surprising idea somewhere new',[1,0]],['Look for the evidence behind it',[2,5]],['Try it on a small example',[3,4]],['Ask how it changes the original plan',[5,1]]]],
-    ['You’re helping with a community event. Pick your task.', [['Make the invitation feel memorable',[0,5]],['Find out what people actually need',[2,1]],['Set up a simple sign-up experience',[3,0]],['Reduce the organiser’s repetitive work',[4,5]]]],
-    ['A project has too many possibilities. What helps you?', [['An unusual example to react to',[1,0]],['A clear definition of success',[5,3]],['A quick comparison with evidence',[2,4]],['A repeatable process for narrowing choices',[4,2]]]],
-    ['You have 20 minutes to experiment. Choose one.', [['Remix an ordinary idea into three new versions',[0,1]],['Make a tiny thing that works',[3,4]],['Test a statement you’ve taken for granted',[2,1]],['Explore the trade-offs in a decision',[5,4]]]],
-    ['The first draft is technically fine, but not useful. You…', [['Change the voice and perspective',[0,2]],['Ask what important question is missing',[1,5]],['Try it in the situation it was made for',[3,2]],['Remove steps and make it easier to reuse',[4,0]]]],
-    ['Which folder would you most like to open?', [['Things I never knew existed',[1,3]],['Ideas worth turning into stories',[0,4]],['Questions with surprisingly complicated answers',[2,5]],['Plans that became something real',[5,3]]]],
-    ['Your team is stuck. You would rather…', [['Build a rough example everyone can respond to',[3,0]],['Separate the known facts from guesses',[2,4]],['Connect ideas from a different field',[1,5]],['Find the bottleneck and simplify it',[4,3]]]],
+    ['Your friend has a new idea. How do you help?', [['Draw it out',[0,3]],['Ask more questions',[1,2]],['Find an easy first step',[4,3]],['Compare a few options',[5,2]]]],
+    ['AI gives you a surprising answer. You…', [['Explore it more',[1,0]],['Check if it is true',[2,5]],['Test it out',[3,4]],['Rethink your plan',[5,1]]]],
+    ['You are planning a party. Pick a job.', [['Design the invite',[0,5]],['Ask what guests want',[2,1]],['Build a sign-up page',[3,0]],['Make the jobs easier',[4,5]]]],
+    ['Too many ideas! What helps you choose?', [['See something different',[1,0]],['Decide on a goal',[5,3]],['Compare the facts',[2,4]],['Use a simple checklist',[4,2]]]],
+    ['You have 20 free minutes. What sounds fun?', [['Create something new',[0,1]],['Build a small tool',[3,4]],['Check a surprising fact',[2,1]],['Plan your next move',[5,4]]]],
+    ['AI gives you a boring first draft. You…', [['Give it more personality',[0,2]],['Ask a new question',[1,5]],['Try it in real life',[3,2]],['Make it simpler',[4,0]]]],
+    ['Which folder would you open first?', [['Cool discoveries',[1,3]],['Creative ideas',[0,4]],['Mysteries explained',[2,5]],['Plans that worked',[5,3]]]],
+    ['Your team is stuck. What do you do?', [['Make a quick example',[3,0]],['Check what we know',[2,4]],['Try a fresh idea',[1,5]],['Find an easier way',[4,3]]]],
 
   ];
   function ranking(answers){const scores=styles.map(()=>0);answers.forEach((a,i)=>{const weights=questions[i]?.[1][a]?.[1];if(weights){scores[weights[0]]+=2;scores[weights[1]]+=1;}});const order=styles.map((_,i)=>i).sort((a,b)=>scores[b]-scores[a]||a-b);const supported=scores[order[1]]>=Math.max(4,scores[order[0]]*.6);return {scores,order,secondary:supported?order[1]:null,blend:supported&&scores[order[0]]-scores[order[1]]<=2};}
