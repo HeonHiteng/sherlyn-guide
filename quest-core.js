@@ -23,10 +23,7 @@
     ['The first draft is technically fine, but not useful. You…', [['Change the voice and perspective',[0,2]],['Ask what important question is missing',[1,5]],['Try it in the situation it was made for',[3,2]],['Remove steps and make it easier to reuse',[4,0]]]],
     ['Which folder would you most like to open?', [['Things I never knew existed',[1,3]],['Ideas worth turning into stories',[0,4]],['Questions with surprisingly complicated answers',[2,5]],['Plans that became something real',[5,3]]]],
     ['Your team is stuck. You would rather…', [['Build a rough example everyone can respond to',[3,0]],['Separate the known facts from guesses',[2,4]],['Connect ideas from a different field',[1,5]],['Find the bottleneck and simplify it',[4,3]]]],
-    ['What makes you want to keep an AI answer?', [['It gives me a new way to express something',[0,1]],['I can trace its reasoning and check its claims',[2,3]],['I can adapt it to a recurring task',[4,2]],['It makes a difficult choice clearer',[5,0]]]],
-    ['You’re learning something unfamiliar. You start with…', [['A small project to take apart',[3,1]],['A broad tour, then follow my curiosity',[1,4]],['A map of what matters and why',[5,2]],['An example I can personalise',[0,3]]]],
-    ['Which improvement would feel most rewarding?', [['The result has a distinctive point of view',[0,5]],['A messy process is suddenly straightforward',[4,1]],['A shaky assumption has been corrected',[2,0]],['A prototype survives its first real test',[3,5]]]],
-    ['At the end of a good afternoon, you want to say…', [['I found something I want to explore further',[1,2]],['I made room for more meaningful work',[4,0]],['I know what to do next and why',[5,4]],['I made something I can show someone',[3,4]]]]
+
   ];
   const chapters = [
     ['AI Foundations','Get your bearings. Learn where AI helps—and where your judgement matters.',['Recognise the pattern','Evidence over confidence','Keep a human in the loop','Your first AI workflow']],
@@ -53,7 +50,7 @@
     if(!v||v.version!==2||!Array.isArray(v.quiz)||v.quiz.length>12||!v.quiz.every(x=>Number.isInteger(x)&&x>=0&&x<4))throw Error('Invalid quiz data');
     if(!Number.isInteger(v.path)||v.path<0||v.path>5||![1,2,3,4].includes(v.goal)||!accessories.some(a=>a[0]===v.accessory))throw Error('Invalid preferences');
     if(!v.completed||typeof v.completed!=='object'||Array.isArray(v.completed)||!v.drafts||typeof v.drafts!=='object'||Array.isArray(v.drafts))throw Error('Invalid progress');
-    const s=fresh();s.quiz=[...v.quiz];s.path=v.path;s.goal=v.goal;s.accessory=v.accessory;s.welcomeSeen=v.welcomeSeen===true;
+    const s=fresh();s.quiz=v.quiz.slice(0,questions.length);s.path=v.path;s.goal=v.goal;s.accessory=v.accessory;s.welcomeSeen=v.welcomeSeen===true;
     if(typeof v.notes!=='string'||v.notes.length>4000)throw Error('Invalid notes');s.notes=v.notes;
     for(const [id,date] of Object.entries(v.completed)){if(!missions.some(m=>m.id===id)||typeof date!=='string'||!Number.isFinite(Date.parse(date))||Date.parse(date)<Date.UTC(2020,0)||Date.parse(date)>Date.now()+86400000)throw Error('Invalid completion');s.completed[id]=new Date(date).toISOString();}
     for(const [id,draft] of Object.entries(v.drafts)){if(!missions.some(m=>m.id===id)||!draft||typeof draft!=='object'||Array.isArray(draft))throw Error('Invalid mission');s.drafts[id]={};for(const [k,val] of Object.entries(draft)){if(!['a','b','c','order'].includes(k)||typeof val!=='string'||val.length>100)throw Error('Invalid answer');s.drafts[id][k]=val;}}
